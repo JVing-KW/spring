@@ -8,8 +8,10 @@ import org.zerock.springex2.dto.TodoDTO;
 import java.util.List;
 
 
-public interface TodoMapper {
 
+public interface TodoMapper {
+    // interface와 그걸 구현하는 클래스 관계처럼
+    //interface TodoMapper를 .xml 설정으로 mybatis와 연결하고 구현까지 해줌
     String getTime();
 
     void insert(TodoVO todoVO);

@@ -33,7 +33,8 @@ public class PageResponseDTO<E> {
 
 
 
-    @Builder(builderMethodName = "withAll")  // withAll이라는 이름의 메서드가 빌더 클래스에 생성될 것입니다. 일반적으로 "with" 접두사를 사용하여 해당 필드의 값을 설정하는 메서드 이름을 지정
+    @Builder(builderMethodName = "withAll")  // withAll이라는 이름의 메서드가 빌더 클래스에 생성될 것입니다.
+    // 일반적으로 "with" 접두사를 사용하여 해당 필드의 값을 설정하는 메서드 이름을 지정
     public PageResponseDTO(org.zerock.springex2.dto.PageRequestDTO pageRequestDTO, List<E> dtoList, int total){
         this.page = pageRequestDTO.getPage();
         this.size = pageRequestDTO.getSize();
