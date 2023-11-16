@@ -23,6 +23,7 @@ public class TodoServiceImpl implements TodoService {
 
     @Autowired
     private ModelMapper modelMapper;
+    //sql문을 요청 + controller 함수를 같이 받아줌
 
     //  글 하나 등록
     @Override
