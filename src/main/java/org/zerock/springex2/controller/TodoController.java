@@ -36,25 +36,26 @@ public class TodoController {
     @RequestMapping("/list")
     public void list(@Valid PageRequestDTO pageRequestDTO, BindingResult bindingResult, Model model){
         log.info(" paging list ......");
-        log.info("paging info .............." + pageRequestDTO) ;
+
+        log.info("요청된 페이징 관련 정보 " + pageRequestDTO) ;
+//        model.addAttribute("dtoList", todoService.getAll());
+
         if(bindingResult.hasErrors()){
             pageRequestDTO = PageRequestDTO.builder().build();
         }
         model.addAttribute("responseDTO", todoService.getList(pageRequestDTO));
     }
 
-
-
     @GetMapping("/register")
     public void registerGet(){
         log.info("GET todo register");}
-
+    
  
     @PostMapping ("/register")
     public String registerPost(@Valid TodoDTO todoDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes){
    // @RequestMapping 함수는 RedirectAttributes 타입의 메소드를 선언하여 Flash Attribute 를 추가할 수 있다. < addFlashAttribute() > .
     // 이 메서드를 사용하여 Redirect 시에 Attribute 를 필요에 따라 제어할 수 있다.
-    // BindingResult 데이터 유효성 검사를 위한 객체를 만들어 주고 @Valid 어노테이션이 처리해줌
+    // BindingResult 데이터 유효성 검사를 위한 객체를 받아주고 @Valid 어노테이션이 처리해줌
     // RedirectAttributes redirect를 처리해주는 객체
     // addFlashAttribute() 를 이용하면 URL에 보이지는 않지만, JSP에서는 일회용으로 사용할수 있다
         //addAttribute()로 데이터를 추가하면 리다이렉트할 url에 쿼리 스트링으로 추가된다.
@@ -88,23 +89,21 @@ public class TodoController {
         log.info(todoDTO);
         model.addAttribute("dto", todoDTO);
     }
-    @PostMapping("/modify")
-    public String modify(@Valid TodoDTO todoDTO,BindingResult bindingResult,RedirectAttributes redirectAttributes){
+    @PostMapping String modify(@Valid TodoDTO todoDTO,BindingResult bindingResult,RedirectAttributes redirectAttributes){
         if(bindingResult.hasErrors())
+        // hasErrors = ture
         {
-            log.info("data not Valid");
+            log.info("데이터 유효하지 않음");
             redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors() );
             redirectAttributes.addAttribute("tno", todoDTO.getTno() );
             return "redirect:/todo/modify";
         }
-        log.info("modify post----------------------------123");
         log.info(todoDTO);
         todoService.modify(todoDTO);
 
         redirectAttributes.addAttribute("tno", todoDTO.getTno() );
 
-
-        return "redirect:/todo/read ";
+        return "redirect:/todo/list";
     }
     //글 하나 삭제
     @PostMapping("/remove")

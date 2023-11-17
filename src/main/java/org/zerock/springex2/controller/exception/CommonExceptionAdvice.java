@@ -30,7 +30,7 @@ public class CommonExceptionAdvice {
     @ExceptionHandler(Exception.class)
     public String exceptCommon(Exception exception){
         log.error("-----------------------------------");
-        log.error("error message : " + exception.getMessage());
+        log.error("에러 메시지 : " + exception.getMessage());
         StringBuffer buffer = new StringBuffer("<ul>");
         buffer.append("<li>" +exception.getMessage()+"</li>");
 

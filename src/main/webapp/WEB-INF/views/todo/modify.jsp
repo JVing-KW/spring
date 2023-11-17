@@ -9,6 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>글 수정 / 삭제</title>
 </head>
+
+
 <body>
 <div class="container-fluid">
     <!-- 기존의 <h1>Header</h1> -->
@@ -31,16 +33,26 @@
                     </div>
                 </div>
             </nav>
-      </div>
+
+
+        </div>
+
+
+
+
+
     </div>
 
     <!-- header end -->
     <!-- 기존의 <h1>Header</h1>끝 -->
+
+
     <div class="row content">
 
         <div class="col">
 
             <div class="card">
+
 
                 <div class="card-header">
 
@@ -125,8 +137,8 @@
                         e.preventDefault()
                         e.stopPropagation()
 
-                        formObj.method ="post"
                         formObj.action ="/todo/modify"
+                        formObj.method ="post"
 
                         formObj.submit()
 
@@ -153,7 +165,7 @@
                         e.preventDefault()
                         e.stopPropagation()
 
-                        self.location = "/todo/list"
+                        self.location = "/todo/list";
 
                     },false);
 

@@ -6,10 +6,9 @@
         <Console name="console" target="SYSTEM_OUT">
             <!--t : thread -->
             <!-- 로거 이름(%logger{36})-->
-            <PatternLayout charset="UTF-8" pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
         </Console>
     </Appenders>
-
 
     <Loggers>
         <logger name="org.springframework" level="INFO" additivity="false">
@@ -23,10 +22,6 @@
         <logger name="org.zerock.springex2.mapper" level="TRACE" additivity="false">
             <appender-ref ref="console" />
         </logger>
-        <logger name="org.zerock.springex2.controller" level="TRACE" additivity="false">
-            <appender-ref ref="console" />
-        </logger>
-
 
         <Root level="info">
             <AppenderRef ref="console"/>
